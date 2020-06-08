@@ -1,18 +1,18 @@
 
 public class MyStack <E>{
-	private myLinkedList<E> ll = new myLinkedList<>();
-	void push(E e) {
+	private myLinkedList<E> ll = new myLinkedList<>(); //From the file "myLinkedList"
+	public void push(E e) {
 		ll.add(e);
 		
 	}
-	E pop() throws Exception{
+	public E pop() throws Exception{
 		if(ll.isEmpty()) {
 			throw new Exception("Popping from the empy list is not allowed.");
 		}
 		return ll.removeLast();
 		
 	}
-	E peek() throws Exception{
+	public E peek() throws Exception{
 		if(ll.isEmpty()) {
 			throw new Exception("Peeking from the empy list is not allowed.");
 		}
