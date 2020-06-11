@@ -1,12 +1,15 @@
 
 
+
 public class myLinkedList<E> {
-	Node<E> head;
+	 Node<E> head;
+	private int size = 0;
 	
 	public void add(E data) {
 		Node<E> toAdd = new Node<>(data);
 		if(head == null) {
 			head = toAdd;
+			size++;
 			return;
 		}
 		Node<E> temp = head;
@@ -14,11 +17,12 @@ public class myLinkedList<E> {
 			temp = temp.next;
 		}
 		temp.next = toAdd;
+		size++;
 	
 	}
 	
 	
-	void print() {
+	public void print() {
 		Node<E> temp = head;
 		while(temp != null) {
 			System.out.print(temp.data+" ");
@@ -31,6 +35,15 @@ public class myLinkedList<E> {
 		return head == null;
 	}
 	
+	
+	public int size() {
+		return size;
+	}
+	
+	
+	public void clear() {
+		head = null;
+	}
 	
 	public E removeLast() throws Exception{
 		
@@ -68,7 +81,7 @@ public class myLinkedList<E> {
 
 		
 	}
-	static class Node<E> {
+	public static class Node<E> {
 		E data;
 		Node<E> next;
 		public Node(E data) {
@@ -83,6 +96,7 @@ public class myLinkedList<E> {
 		for(int i = 0 ; i<10 ; i++) {
 			myll.add(i);
 		}
+		System.out.println(myll.size());
 		myll.print();
 	}
 	
