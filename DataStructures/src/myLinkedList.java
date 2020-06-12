@@ -43,6 +43,7 @@ public class myLinkedList<E> {
 	
 	public void clear() {
 		head = null;
+		size = 0;
 	}
 	
 	public E removeLast() throws Exception{
@@ -65,7 +66,27 @@ public class myLinkedList<E> {
 		temp.next = null;
 		return toRemove.data;
 	}
-	
+	public void remove(int pos) {
+		if(head == null) {
+			return;
+		}
+		Node<E> temp = head;
+		if(pos ==0) {
+			head = temp.next;
+			return;
+		}
+		for(int i = 0 ; temp!=null && i<pos-1 ;i++) {
+			temp= temp.next;
+			
+		}
+		if(temp == null || temp.next == null) {
+			return;
+		}
+		Node<E> next = temp.next.next;
+		temp.next = next;
+			
+		
+	}
 	
 	public E getLast() throws Exception{
 		Node<E> temp = head;
@@ -96,6 +117,7 @@ public class myLinkedList<E> {
 		for(int i = 0 ; i<10 ; i++) {
 			myll.add(i);
 		}
+		myll.remove(5);
 		System.out.println(myll.size());
 		myll.print();
 	}
