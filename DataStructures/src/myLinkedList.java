@@ -66,6 +66,9 @@ public class myLinkedList<E> {
 		temp.next = null;
 		return toRemove.data;
 	}
+	
+	
+	
 	public void remove(int pos) {
 		if(head == null) {
 			return;
@@ -84,9 +87,9 @@ public class myLinkedList<E> {
 		}
 		Node<E> next = temp.next.next;
 		temp.next = next;
-			
-		
 	}
+	
+	
 	
 	public E getLast() throws Exception{
 		Node<E> temp = head;
