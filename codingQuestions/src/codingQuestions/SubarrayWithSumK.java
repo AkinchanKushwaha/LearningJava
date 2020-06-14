@@ -9,7 +9,7 @@ import java.util.Set;
 public class SubarrayWithSumK {
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 			
 		 int [] a = {2,1,3,-4,-2};
 		 int k =6;
