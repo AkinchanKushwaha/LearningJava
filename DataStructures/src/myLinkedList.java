@@ -1,6 +1,3 @@
-
-
-
 public class myLinkedList<E> {
 	 Node<E> head;
 	private int size = 0;
@@ -69,24 +66,35 @@ public class myLinkedList<E> {
 	
 	
 	
-	public void remove(int pos) {
-		if(head == null) {
-			return;
-		}
+	public E remove(int pos) {
+		Node<E> toRemove;
 		Node<E> temp = head;
-		if(pos ==0) {
+		
+		if(head == null) return null;
+		
+		if(head == null) {
+			return null;
+		}
+		if(pos == 0) {
+			toRemove = head;
 			head = temp.next;
-			return;
+			temp = null;
+			return toRemove.data;
 		}
-		for(int i = 0 ; temp!=null && i<pos-1 ;i++) {
-			temp= temp.next;
-			
+		
+		for(int i = 0 ; i<pos-1 && temp !=null; i++ ) {
+			temp = temp.next;
 		}
-		if(temp == null || temp.next == null) {
-			return;
+		
+		if(temp == null || temp.next == null ) {
+			toRemove = temp.next;
+			return toRemove.data;
 		}
-		Node<E> next = temp.next.next;
-		temp.next = next;
+		
+		toRemove = temp.next;
+		Node<E> nextOfToRemove = temp.next.next;
+		temp.next = nextOfToRemove;
+		return toRemove.data;
 	}
 	
 	
