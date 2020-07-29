@@ -113,6 +113,23 @@ public class myLinkedList<E> {
 
 		
 	}
+	
+	public void insertNodeAtPosition(E data, int pos) {
+		Node<E> new_node = new Node<>(data);
+		Node<E> temp = head;
+		
+		int index = 0;
+		
+		while(index < pos-1) {
+			temp = temp.next;
+			index++;
+		}
+		new_node.next = temp.next;
+		temp.next = new_node;
+		
+	}
+	
+	
 	public static class Node<E> {
 		E data;
 		Node<E> next;
@@ -128,8 +145,8 @@ public class myLinkedList<E> {
 		for(int i = 0 ; i<10 ; i++) {
 			myll.add(i);
 		}
-		myll.remove(5);
-		System.out.println(myll.size());
+		myll.insertNodeAtPosition(15,5);
+		
 		myll.print();
 	}
 	
