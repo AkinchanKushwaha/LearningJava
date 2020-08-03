@@ -1,36 +1,39 @@
 package ThirtyDaysOfCodeHackerRank;
 
 import java.io.*;
-import java.util.*;
-import java.text.*;
 import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.regex.*;
 
 public class dayTwo {
-	
+
+    // Complete the solve function below.
+    static void solve(double meal_cost, int tip_percent, int tax_percent) {
+        double tip = meal_cost *tip_percent/100;
+        double tax = meal_cost *tax_percent/100;
+        int totalCost = (int) Math.round(meal_cost +tip+tax);
+        System.out.print(totalCost);
+
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        int i = 4;
-        double d = 4.0;
-        String s = "HackerRank ";
-		
-        Scanner scan = new Scanner(System.in);
+        double meal_cost = scanner.nextDouble();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        /* Declare second integer, double, and String variables. */
-        int a = scan.nextInt();
-        double b = scan.nextDouble();
-        scan.nextLine();
-        String c = scan.nextLine();
-        /* Read and save an integer, double, and String to your variables.*/
-        // Note: If you have trouble reading the entire String, please go back and review the Tutorial closely.
-        
-        /* Print the sum of both integer variables on a new line. */
-        System.out.println(a+i);
-        /* Print the sum of the double variables on a new line. */
-		System.out.println(d+b);
-        /* Concatenate and print the String variables on a new line; 
-        	the 's' variable above should be printed first. */
-        System.out.println(s+c);
+        int tip_percent = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        scan.close();
+        int tax_percent = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        solve(meal_cost, tip_percent, tax_percent);
+
+        scanner.close();
     }
 }
