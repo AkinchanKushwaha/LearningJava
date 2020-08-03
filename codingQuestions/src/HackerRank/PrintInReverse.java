@@ -1,4 +1,4 @@
-package codingQuestions;
+package HackerRank;
 import java.util.Scanner;
 
 public class PrintInReverse {

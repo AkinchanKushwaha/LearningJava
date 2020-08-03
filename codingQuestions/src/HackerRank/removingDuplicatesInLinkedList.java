@@ -1,4 +1,4 @@
-package codingQuestions;
+package HackerRank;
 
 import java.io.*;
 import java.math.*;
