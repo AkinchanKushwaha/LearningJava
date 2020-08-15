@@ -1,8 +1,7 @@
-package HackerRank;
-
+package DataStructuresQuestion;
 import java.util.Scanner;
 
-public class PrintTheElementsOfALinkedList {
+public class PrintInReverse {
 
     static class SinglyLinkedListNode {
         public int data;
@@ -36,7 +35,19 @@ public class PrintTheElementsOfALinkedList {
         }
     }
 
-    // Complete the printLinkedList function below.
+    public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep) {
+        while (node != null) {
+            System.out.print(node.data);
+
+            node = node.next;
+
+            if (node != null) {
+                System.out.print(sep);
+            }
+        }
+    }
+
+    // Complete the reversePrint function below.
 
     /*
      * For your reference:
@@ -48,37 +59,41 @@ public class PrintTheElementsOfALinkedList {
      *
      */
     
- //Answer
-    static void printLinkedList(SinglyLinkedListNode head) {
+//    Answer
+    static void reversePrint(SinglyLinkedListNode head) {
         if(head == null){
             return;
         }
-        SinglyLinkedListNode  temp = head;
-        while(temp!=null){
-            System.out.println(temp.data);
-            temp = temp.next;
-        }
-
+        reversePrint(head.next);
+    
+        System.out.println(head.data);
+    
+    return;
 
     }
-//
+//    
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        SinglyLinkedList llist = new SinglyLinkedList();
-
-        int llistCount = scanner.nextInt();
+        int tests = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        for (int i = 0; i < llistCount; i++) {
-            int llistItem = scanner.nextInt();
+        for (int testsItr = 0; testsItr < tests; testsItr++) {
+            SinglyLinkedList llist = new SinglyLinkedList();
+
+            int llistCount = scanner.nextInt();
             scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-            llist.insertNode(llistItem);
-        }
+            for (int i = 0; i < llistCount; i++) {
+                int llistItem = scanner.nextInt();
+                scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        printLinkedList(llist.head);
+                llist.insertNode(llistItem);
+            }
+
+            reversePrint(llist.head);
+        }
 
         scanner.close();
     }

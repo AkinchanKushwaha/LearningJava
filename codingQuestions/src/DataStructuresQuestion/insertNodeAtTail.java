@@ -1,11 +1,11 @@
-package HackerRank;
+package DataStructuresQuestion;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class InsetingNodeAtASpecificLocation {
+public class insertNodeAtTail {
 
     static class SinglyLinkedListNode {
         public int data;
@@ -19,24 +19,12 @@ public class InsetingNodeAtASpecificLocation {
 
     static class SinglyLinkedList {
         public SinglyLinkedListNode head;
-        public SinglyLinkedListNode tail;
 
         public SinglyLinkedList() {
             this.head = null;
-            this.tail = null;
         }
 
-        public void insertNode(int nodeData) {
-            SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
-
-            if (this.head == null) {
-                this.head = node;
-            } else {
-                this.tail.next = node;
-            }
-
-            this.tail = node;
-        }
+      
     }
 
     public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
@@ -51,7 +39,7 @@ public class InsetingNodeAtASpecificLocation {
         }
     }
 
-    // Complete the insertNodeAtPosition function below.
+    // Complete the insertNodeAtTail function below.
 
     /*
      * For your reference:
@@ -63,22 +51,23 @@ public class InsetingNodeAtASpecificLocation {
      *
      */
     
-//    ==========ANSWER=============
-    static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
-
-        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
-        SinglyLinkedListNode temp = head;
-        int index = 0 ; 
-        while(index<position-1){
-            temp = temp.next;
-            index++;
+    
+//    Answer   //
+    static SinglyLinkedListNode NodeAtTail(SinglyLinkedListNode head, int data) {
+        SinglyLinkedListNode toAdd = new SinglyLinkedListNode(data);
+        toAdd.next = null;
+        if(head == null){
+            head = toAdd;
+            return head;
         }
-        newNode.next = temp.next;
-        temp.next = newNode;
+        SinglyLinkedListNode temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = toAdd;
         return head;
-
     }
-//    ================================
+//            //
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -93,19 +82,15 @@ public class InsetingNodeAtASpecificLocation {
         for (int i = 0; i < llistCount; i++) {
             int llistItem = scanner.nextInt();
             scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        	
+          SinglyLinkedListNode llist_head = NodeAtTail(llist.head, llistItem);
 
-            llist.insertNode(llistItem);
+          llist.head = llist_head;
         }
 
-        int data = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        int position = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        SinglyLinkedListNode llist_head = insertNodeAtPosition(llist.head, data, position);
-
-        printSinglyLinkedList(llist_head, " ", bufferedWriter);
+        printSinglyLinkedList(llist.head, "\n", bufferedWriter);
         bufferedWriter.newLine();
 
         bufferedWriter.close();
@@ -113,3 +98,4 @@ public class InsetingNodeAtASpecificLocation {
         scanner.close();
     }
 }
+

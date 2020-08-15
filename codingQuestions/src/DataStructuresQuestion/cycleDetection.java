@@ -1,4 +1,4 @@
-package HackerRank;
+package DataStructuresQuestion;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

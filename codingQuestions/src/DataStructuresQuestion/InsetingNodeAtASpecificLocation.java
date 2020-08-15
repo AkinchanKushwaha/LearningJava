@@ -1,11 +1,11 @@
-package HackerRank;
+package DataStructuresQuestion;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class insertNodeAtTail {
+public class InsetingNodeAtASpecificLocation {
 
     static class SinglyLinkedListNode {
         public int data;
@@ -19,12 +19,24 @@ public class insertNodeAtTail {
 
     static class SinglyLinkedList {
         public SinglyLinkedListNode head;
+        public SinglyLinkedListNode tail;
 
         public SinglyLinkedList() {
             this.head = null;
+            this.tail = null;
         }
 
-      
+        public void insertNode(int nodeData) {
+            SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+            if (this.head == null) {
+                this.head = node;
+            } else {
+                this.tail.next = node;
+            }
+
+            this.tail = node;
+        }
     }
 
     public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
@@ -39,7 +51,7 @@ public class insertNodeAtTail {
         }
     }
 
-    // Complete the insertNodeAtTail function below.
+    // Complete the insertNodeAtPosition function below.
 
     /*
      * For your reference:
@@ -51,23 +63,22 @@ public class insertNodeAtTail {
      *
      */
     
-    
-//    Answer   //
-    static SinglyLinkedListNode NodeAtTail(SinglyLinkedListNode head, int data) {
-        SinglyLinkedListNode toAdd = new SinglyLinkedListNode(data);
-        toAdd.next = null;
-        if(head == null){
-            head = toAdd;
-            return head;
-        }
+//    ==========ANSWER=============
+    static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
+
+        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
         SinglyLinkedListNode temp = head;
-        while(temp.next != null){
+        int index = 0 ; 
+        while(index<position-1){
             temp = temp.next;
+            index++;
         }
-        temp.next = toAdd;
+        newNode.next = temp.next;
+        temp.next = newNode;
         return head;
+
     }
-//            //
+//    ================================
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -82,15 +93,19 @@ public class insertNodeAtTail {
         for (int i = 0; i < llistCount; i++) {
             int llistItem = scanner.nextInt();
             scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-        	
-          SinglyLinkedListNode llist_head = NodeAtTail(llist.head, llistItem);
 
-          llist.head = llist_head;
+            llist.insertNode(llistItem);
         }
 
+        int data = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
+        int position = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        printSinglyLinkedList(llist.head, "\n", bufferedWriter);
+        SinglyLinkedListNode llist_head = insertNodeAtPosition(llist.head, data, position);
+
+        printSinglyLinkedList(llist_head, " ", bufferedWriter);
         bufferedWriter.newLine();
 
         bufferedWriter.close();
@@ -98,4 +113,3 @@ public class insertNodeAtTail {
         scanner.close();
     }
 }
-
