@@ -8,7 +8,7 @@ public class dayTwentyfive
     {
         Scanner in = new Scanner(System.in);
         int p = in.nextInt();
-        for(int a0 = 0; a0 < p; a0++)
+        for(int i = 0; i < p; i++)
         {
             int n = in.nextInt();
             if(n==1) System.out.println("Not prime");
@@ -16,11 +16,11 @@ public class dayTwentyfive
             {
                 boolean check=true;
                 int l=(int)Math.sqrt(n);
-                for(int i=2;i<=l;++i) 
-                    if(n%i==0)
+                for(int j=2;j<=l;++j) 
+                    if(n%j==0)
                     {
                         check=false; 
-                        i=n;
+                        j=n;
                     }
                 if(check) System.out.println("Prime");
                 else System.out.println("Not prime");
