@@ -21,7 +21,7 @@ public class myCircularLinkedList{
 	 
 	    if (head != null) {
 	        do {
-	            System.out.println(temp.data + " ");
+	            System.out.println(temp.data );
 	            temp = temp.next;
 	        } while (temp != head);
 	    }
